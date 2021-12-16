@@ -167,3 +167,8 @@ button:focus {
 .text-color-black {
     color: black;
 }
+
+.share-movie-form {
+    min-height: 600px;
+    min-width: 100px;
+}

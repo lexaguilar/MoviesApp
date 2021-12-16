@@ -2,7 +2,7 @@
 
 ## Getting started
 
-run App MOvies 
+run App Movies 
 
 ```
 npm install
