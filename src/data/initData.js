@@ -1,0 +1,1 @@
+export const initDates = [1900, 2021];

@@ -36,7 +36,7 @@ const http = url => {
 
     };
 
-    const _url = `${path}${url}`;
+    const _url = `${url}`;
 
     return {
         

@@ -2,6 +2,7 @@ import './App.css';
 import Favorites from './components/favorites';
 import Movies from './components/movies';
 import SearchBar from './components/searchBar/SearchBar';
+import SearchRange from './components/searchBar/SearchRange';
 import { DataProvider } from './context/DataContext';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <DataProvider>
       <div className="container">
         <SearchBar />
+        <SearchRange />
         <Movies />
         <Favorites />
       </div>

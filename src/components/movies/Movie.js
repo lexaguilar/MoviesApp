@@ -1,40 +1,43 @@
 import React, { useContext } from 'react';
 import { DataContext } from '../../context/DataContext';
+import ShareMovie from '../dialog/ShareMovie';
 import { ButonHeart } from '../icons/Heart';
+import ImgMovie from '../icons/ImgMovie';
 
-const Movie = ({ movie }) => {
+const Movie = ({ movie, onOpenFavorite }) => {
 
     const { title, year, info } = movie;
     const { favorites, setFavorites } = useContext(DataContext);
+
     
     const onClickFavorite = () => {
 
-        if(favorites.includes(movie.title)) {
+        if(favorites.includes(title)) {
             
-            const newList = [...favorites].filter(favorite => favorite !== movie.title);
+            const newList = [...favorites].filter(favorite => favorite !== title);
             
             setFavorites([ ...newList ]);
 
         }else{
 
-            setFavorites([...favorites, movie.title]);
+            setFavorites([...favorites, title]);
 
         }
 
     }
 
-    const thisMovieIsAdded = favorites.includes(movie.title);
+    const thisMovieIsAdded = favorites.includes(title);
 
     const shareMove = () => {
 
-        
+        onOpenFavorite( movie );
 
     }
 
     return (       
         <div class="movie-card">
             <div className="movie-card__img">
-                <img className='card__img' src="" alt="" />
+                <ImgMovie title={title} />
             </div>
             <div class="movie-card__share">
                 <ButonHeart onClick={onClickFavorite} isAdded={thisMovieIsAdded}/>

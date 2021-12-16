@@ -3,13 +3,15 @@ import { DataContext } from '../../context/DataContext';
 
 const Favorites = () => {
 
-    const { query, setQuery } = useContext(DataContext);
-
-    console.log(query);
+    const { favorites } = useContext(DataContext);
 
     return (
         <div>
-            
+            <h2 className='favorite-movie-title'>Favorites Movies</h2>
+            {
+                favorites && 
+                favorites.map(favorite => <div className='favorite-movie'>{favorite}</div>)
+            }
         </div>
     );
 }

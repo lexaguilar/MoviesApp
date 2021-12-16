@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import http from '../utils/http';
+import { initDates } from '../data/initData';
+import { getMovies } from '../services/getMovies';
 
-const useMovies = ({ title_like='', genders = [], initDate, endDate, _limit=5, _page=0 }) => {
-
+const useMovies = ({ title_like='', genders = [], dates = [1900, 2021], pageSize = 8, pageNumber = 1 }) => {
+    
     const [data, setData] = useState([]);
 
     const callApi = async () => {
 
-        const resp = await http('movies').asGet({ title_like, _page, _limit  });
+        const resp = await getMovies({ title_like, dates, pageSize, pageNumber  });
+
+        console.log(resp);
 
         setData(resp);
 
@@ -17,7 +21,7 @@ const useMovies = ({ title_like='', genders = [], initDate, endDate, _limit=5, _
 
         callApi();
        
-    }, [title_like]);
+    }, [title_like, dates, pageNumber]);
 
     return {
         data

@@ -1,17 +1,24 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { DataContext } from '../../context/DataContext';
 
 const SearchBar = () => {
 
     const [text, setText] = useState('');
-    const { setQuery } = useContext(DataContext);
+    const { setQuery, setPageNumber } = useContext(DataContext);
 
     const onTextChange = (e) => setText(e.target.value);
 
+    const search = () => {
+
+        setPageNumber(1);
+        setQuery(text);
+
+    }
+
     return (
-        <div>
-            <input type="text" placeholder="Search..." onChange={onTextChange} />
-            <button onClick={() => setQuery(text)}>Search</button>
+        <div className='content-search-bar'>
+            <input type="text" className='text-color-black' placeholder="Search a movie" onChange={onTextChange} />
+            <button onClick={search}>Search</button>
         </div>
     );
 }
